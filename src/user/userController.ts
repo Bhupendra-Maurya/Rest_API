@@ -6,6 +6,7 @@ import { sign } from "jsonwebtoken";
 import { config } from "../config/config";
 import { User } from "./userType";
 
+// Create new Users
 const createUser = async (req: Request, res: Response, next: NextFunction) => {
   // Validation
   const { name, email, password } = req.body;
@@ -51,11 +52,9 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
       expiresIn: "7d",
       algorithm: "HS256",
     });
-    res.json({ accessToken: token });
+    res.status(201).json({ accessToken: token });
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (err) {
     return next(createHttpError(500, "Error while gihning jwt token"));
   }
 };
-
-export { createUser };
