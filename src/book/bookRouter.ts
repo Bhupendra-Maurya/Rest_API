@@ -1,8 +1,23 @@
 import express from "express";
 import { createBook } from "./bookController";
+import multer from "multer";
+import path from "node:path";
 
 const bookRouter = express.Router();
 
-bookRouter.post("/", createBook);
+const upload = multer({
+  dest: path.resolve(__dirname, "../../public/data/uploads"),
+  limits: { fileSize: 3e7 },
+});
+
+// Route->Middleware->Controller/Handler
+bookRouter.post(
+  "/",
+  upload.fields([
+    { name: "coverImage", maxCount: 1 },
+    { name: "bookFile", maxCount: 1 },
+  ]),
+  createBook
+);
 
 export default bookRouter;

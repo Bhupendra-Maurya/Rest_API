@@ -5,7 +5,7 @@ export interface Book{
     title: string;
     author:User;
     genre:string;
-    coverImg:string;
+    coverImage:string;
     bookFile:string;
     createdAt:Date;
     updatedAt:Date;

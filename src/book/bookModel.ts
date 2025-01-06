@@ -16,7 +16,7 @@ const bookSchema = new mongoose.Schema<Book>(
       type: String,
       required: true,
     },
-    coverImg: {
+    coverImage: {
       type: String,
       required: true,
     },
