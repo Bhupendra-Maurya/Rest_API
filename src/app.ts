@@ -1,6 +1,7 @@
 import express from "express";
 import globalErrorHandler from "./middlewares/globalErrorHandler";
 import userRouter from "./user/userRouter";
+import bookRouter from "./book/bookRouter";
 
 const app = express();
 app.use(express.json());
@@ -11,8 +12,9 @@ app.get("/", (req, res) => {
 });
 
 // user router
-app.use('/api/users',userRouter)
-
+app.use("/api/users", userRouter);
+//Book Router
+app.use("/api/books", bookRouter);
 // Global error handler
 app.use(globalErrorHandler);
 
